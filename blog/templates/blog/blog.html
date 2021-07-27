@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}تصفح اخر المدونات وتعرف علي كل شيئ يخص السفر والدراسة في الخارج{% endblock title %}
+    
+{% block blog %}
+  <!-- ***** Breadcrumb Area Start ***** -->
+  <div class="breadcrumb-area">
+    <div class="container h-100">
+        <div class="row h-100 align-items-end">
+            <div class="col-12">
+                <div class="breadcumb--con">
+                    <h2 class="title">Blog</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Blog</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background Curve -->
+    <div class="breadcrumb-bg-curve">
+        <img src="{% static './img/core-img/curve-5.png' %}" alt="">
+    </div>
+</div>
+<!-- ***** Breadcrumb Area End ***** -->
+
+<!-- ***** Blog Area Start ***** -->
+<div class="uza-blog-area section-padding-80">
+    <div class="container">
+        <div class="row">
+            {% for x in blog %}
+            <!-- Single Blog Post -->
+            <div class="col-12 col-lg-4">
+                <div class="single-blog-post bg-img mb-80" style="background-image: url({{x.image.url}});">
+                    <!-- Post Content -->
+                    <div class="post-content text-right" dir="rtl">
+                        <span class="post-date"><span>{{x.date_published|date:"d"}}</span> {{x.date_published|date:"M Y"}}</span>
+                        <a href="#" class="post-title">{{x.title}}</a>
+                        <p>{{x.body|truncatewords:30}}</p>
+                        <a href="{% url 'blog:detail' x.slug %}" class="read-more-btn" dir="ltr">Read More <i class="arrow_carrot-2right"></i></a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- ***** Blog Area End ***** -->
+{% endblock blog %}
+    

@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="{% block meta %}اديو باس للخدمات التعليمية والحاق الطلاب بالخارج{% endblock meta %}"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Title -->
+    <title>{% block title %}EDU-PATH|للخدمات التعليمية{% endblock title %}</title>
+    <!-- Favicon -->
+    <link rel="icon" href="{% static './img/core-img/favicon.ico' %}">
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="{% static 'style.css' %} ">
+
+</head>
+<body>
+{% include 'snippets/header.html' with value=x %}
+{% block content %}
+    
+<!-- ***** Top Search Area Start ***** -->
+<!-- ***** Top Search Area End ***** -->
+{% block welcome %}
+
+{% endblock welcome %}
+{% block about %}
+
+{% endblock about %}
+    
+{% block service %}
+
+{% endblock service %}
+    
+
+{% block student %}
+    
+{% endblock student %}
+    
+
+{% block all %}
+    <!-- ***** Portfolio Area Start ***** -->
+
+    
+    {% endblock all %}
+    
+    {% block blog %}
+    
+    {% endblock blog %}
+    {% endblock content %}
+    <!-- ***** Footer Area Start ***** -->
+    <footer class="footer-area section-padding-80-0">
+        <div class="container">
+            <div class="row justify-content-between">
+                {% for x in contact %}
+                <!-- Single Footer Widget -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-footer-widget mb-80">
+                        <!-- Widget Title -->
+                        <h4 class="widget-title">Contact Us</h4>
+                        <!-- Footer Content -->
+                        <div class="footer-content mb-15">
+                            <a href="tel://{{x.phoneOne}}"><h3>{{x.phoneOne}}</h3></a>
+                            <p>{{x.adderess}}<br> <a href="mailto://{{x.email}}">{{x.email}}</a></p>
+                        </div>
+                        <p class="mb-0">{{x.workTime}}<br>
+                            {{x.workOff}}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                <!-- Single Footer Widget -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-footer-widget mb-80">
+                        <!-- Widget Title -->
+                        <h4 class="widget-title">Quick Link</h4>
+
+                        <!-- Nav -->
+                        <nav>
+                            <ul class="our-link">
+                                <li><a href="{% url 'about:about' %}">About Us</a></li>
+                                <li><a href="{% url 'blog:blog' %}">Blog</a></li>
+                                <li><a href="{% url 'contact:form' %}">Contact Us</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <!-- Single Footer Widget -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-footer-widget mb-80">
+                        <!-- Widget Title -->
+                        <h4 class="widget-title">Resources</h4>
+
+                        <!-- Nav -->
+                        <nav>
+                            <ul class="our-link">
+                                <li><a href="{% url 'contact:form' %}">Customer Support</a></li>
+                                <li><a href="{% url 'about:about' %}">Our Team</a></li>
+                                <li><a href="{% url 'contact:form' %}">Contact</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                {% for x in contact %}
+                <!-- Single Footer Widget -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-footer-widget mb-80">
+                        <!-- Widget Title -->
+                        <h4 class="widget-title">About Us</h4>
+                        <p>{{x.about}}</p>
+                        <!-- Copywrite Text -->
+                        <div class="copywrite-text mb-30">
+                            <p>&copy; Copyright <script>document.write(new Date().getFullYear());</script> <a href="{% url 'homepage:home' %}">EDU-PATH</a>.</p>
+                        </div>
+                        <!-- Social Info -->
+                        <div class="footer-social-info">
+                            <a href="{{x.face}}" class="facebook" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="{{x.inst}}" class="instagram" data-toggle="tooltip" data-placement="top" title="instagram"><i class="fa fa-instagram"></i></a>
+                            <a href="{{x.twit}}" class="twitter" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a>
+                            <a href="{{x.tele}}" class="telegram" data-toggle="tooltip" data-placement="top" title="telegram"><i class="fa fa-telegram"></i></a>
+                            <a href="{{x.tup}}" class="youtube" data-toggle="tooltip" data-placement="top" title="YouTube"><i class="fa fa-youtube-play"></i></a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+ <div class="row" style="margin-bottom: 30px;">
+<!-- Link back RED-DEV can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This site is made with <i class="fa fa-star-o" aria-hidden="true"></i> by <a href="mailto:  //reddeve4@gmail.com" target="_blank">RED-DEVE</a>
+<!-- Link back to RED_DEV can't be removed. Template is licensed under CC BY 3.0. -->
+            </div>
+
+        </div>
+    </footer>
+    <!-- ***** Footer Area End ***** -->    
+     <!-- ******* All JS Files ******* -->
+    <!-- jQuery js -->
+    <script src="{% static 'js/jquery.min.js' %} "></script>
+    <!-- Popper js -->
+    <script src="{% static 'js/popper.min.js' %} "></script>
+    <!-- Bootstrap js -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- All js -->
+    <script src="{% static 'js/uza.bundle.js' %} "></script>
+    <!-- Active js -->
+    <script src="{% static 'js/default-assets/active.js' %} "></script>
+</body>
+</html>

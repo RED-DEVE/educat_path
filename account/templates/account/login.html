@@ -1,0 +1,75 @@
+{% extends 'log.html' %}
+{% load static %}
+{% block form %} 
+<form class="login100-form validate-form" method="post">{% csrf_token %}
+  <div class="d-flex flex-column pb-3">
+    <a href="{% url 'homepage:home' %}"><img class="img-fluid mx-auto d-block" src="{% static 'img/logo.png' %}" alt="logo image" width="72" height="72"></a>
+  </div>
+  <span class="login100-form-title p-b-33">
+    Account Login
+  </span>
+
+  <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+    <input type="email" name="email" id="inputEmail" class="input100" placeholder="Email address" required autofocus>
+    <span class="focus-input100-1"></span>
+    <span class="focus-input100-2"></span>
+  </div>
+
+  <div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
+    <input type="password" name="password" id="inputPassword" class="input100" placeholder="Password" required>
+    <span class="focus-input100-1"></span>
+    <span class="focus-input100-2"></span>
+  </div>
+  {% for field in login_form %}
+  <p>
+    {% for error in field.errors %}
+      <p style="color: red">{{ error }}</p>
+    {% endfor %}
+  </p>
+{% endfor %}
+{% if login_form.non_field_errors %}
+<div style="color: red">
+  <p>{{login_form.non_field_errors}}</p>
+</div>
+  
+{% endif %}
+
+  <div class="container-login100-form-btn m-t-20">
+    <button class="login100-form-btn" type="submit">
+      Sign in
+    </button>
+  </div>
+
+  <div class="text-center p-t-45 p-b-4">
+    <span class="txt1">
+      Forgot
+    </span>
+
+    <a href="{% url 'password_reset' %}" class="txt2 hov1">
+      Password?
+    </a>
+  </div>
+
+  <div class="text-center">
+    <span class="txt1">
+      Create an account?
+    </span>
+
+    <a href="{% url 'account:register' %}" class="txt2 hov1">
+      Sign up
+    </a>
+  </div>
+
+  <div class="text-center">
+    <span class="txt1">
+      Go Back To Home?
+    </span>
+
+    <a href="{% url 'homepage:home' %}" class="txt2 hov1">
+      Home
+    </a>
+  </div>
+
+</form>
+        
+{% endblock form %}

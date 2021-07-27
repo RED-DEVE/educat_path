@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    ادرس في الخارج في اكبر الجامعات المعتمدة من الاتحاد الاروبي 
+{% endblock title %}
+    
+{% block service %}
+    <!-- ***** Breadcrumb Area Start ***** -->
+    <div class="breadcrumb-area">
+        <div class="container h-100">
+            <div class="row h-100 align-items-end">
+                <div class="col-12">
+                    <div class="breadcumb--con">
+                        <h2 class="title">Services</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{% url 'homepage:home' %}"><i class="fa fa-home"></i> Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Services</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Background Curve -->
+        <div class="breadcrumb-bg-curve">
+            <img src="{% static './img/core-img/curve-5.png' %}" alt="">
+        </div>
+    </div>
+    <!-- ***** Breadcrumb Area End ***** -->
+    <!-- ***** Services Area Start ***** -->
+    <section class="uza-services-area section-padding-80-0">
+        <div class="container">
+            <div class="row">
+                {% for x in service %}
+                <!-- Single Service Area -->
+                <div class="col-12 col-sm-6 col-lg-6">
+                    <div class="single-service-area mb-80">
+                        <!-- Service Icon -->
+                        <div class="service-icon">
+                            <img src="{{x.icon.url}}" alt="">
+                        </div>
+                        <h5>{{x.service_name}}</h5>
+                        <p>{{x.description}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- ***** Services Area End ***** -->
+{% endblock service %}
+    

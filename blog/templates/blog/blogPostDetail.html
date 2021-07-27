@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block blog %}
+<h1>blog post detail page from blog app</h1>
+<div class="container mt-4 p-4">
+  <div class="row">
+    <div class="blog-posts">
+      <h3 class="mb-3 font-weight-normal">Blog posts:</h3>
+      {% if blog_posts %}
+      <ul class="list-group">
+        {% for post in blog_posts %}
+        <a href="{% url 'blog:detail' post.slug %}" style="text-decoration: none;"><li class="list-group-item">{{post}}</li></a>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p>You have no blog posts. Create a post <a href="{% url 'blog:create' %}">here</a>.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock blog %}

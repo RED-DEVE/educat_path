@@ -1,0 +1,72 @@
+{% extends 'log.html' %}
+{% load static %}
+{% block form %} 
+<form class="login100-form validate-form" method="post">{% csrf_token %}
+  <div class="d-flex flex-column pb-3">
+    <a href="{% url 'homepage:home' %}"><img class="img-fluid mx-auto d-block" src="{% static 'img/logo.png' %}" alt="logo image" width="72" height="72"></a>
+  </div>
+  <span class="login100-form-title p-b-33">
+    MY-Account
+  </span>
+
+  <div class="wrap-input100 validate-input">
+    <input type="email" name="email" id="inputEmail" class="input100" placeholder="Email address" required autofocus value={{account_form.initial.email}}>
+    <span class="focus-input100-1"></span>
+    <span class="focus-input100-2"></span>
+  </div>
+
+  <div class="wrap-input100 rs1 validate-input">
+    <input type="text" name="username" id="inputUsername" class="input100" placeholder="Username" required value="{{account_form.initial.username}}">
+    <span class="focus-input100-1"></span>
+    <span class="focus-input100-2"></span>
+  </div>
+  {% for field in account_form %}
+      <p>
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+  {% endfor %}
+  {% if account_form.non_field_errors %}
+    <div style="color: red">
+      <p>{{account_form.non_field_errors}}</p>
+    </div>
+      
+  {% endif %}
+
+  {% if success_message %}
+  <p style="color:green; text-align: center;">{{success_message}}</p>
+  {% endif  %}
+
+  <div class="container-login100-form-btn m-t-20">
+    <button class="login100-form-btn" type="submit">
+      Save changes
+    </button>
+  </div>
+
+  <div class="text-center p-t-45 p-b-4">
+    <span class="txt1">
+      IF You Want
+    </span>
+
+    <a href="{% url 'password_change' %}" class="txt2 hov1">
+      Change Password?
+    </a>
+  </div>
+
+  <div class="text-center">
+    <span class="txt1">
+      Go Back To Home?
+    </span>
+
+    <a href="{% url 'homepage:home' %}" class="txt2 hov1">
+      Home
+    </a>
+  </div>
+
+</form>
+
+
+        
+{% endblock form %}
+

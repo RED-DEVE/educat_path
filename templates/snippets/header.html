@@ -1,0 +1,91 @@
+    {% load static %}
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="wrapper">
+            <div class="cssload-loader"></div>
+        </div>
+    </div>
+    <!-- ***** Top Search Area Start ***** -->
+    <div class="top-search-area">
+        <!-- Search Modal -->
+        <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <!-- Close Button -->
+                        <button type="button" class="btn close-btn" data-dismiss="modal"><i class="fa fa-times"></i></button>
+                        <!-- Form -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Top Search Area End ***** -->
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area">
+        <!-- Main Header Start -->
+        <div class="main-header-area">
+            <div class="classy-nav-container breakpoint-off">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar justify-content-between" id="uzaNav">
+
+                    <!-- Logo -->
+                    <a class="nav-brand" href="{% url 'homepage:home' %}"><img src="{% static './img/logo-no-back-5 (3).png' %}" alt=""></a>
+
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <!-- Menu -->
+                    <div class="classy-menu">
+                        <!-- Menu Close Button -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul id="nav">
+                                <li class="current-item"><a href="{% url 'homepage:home' %}">Home</a></li>
+                                <li><a href="#">Pages</a>
+                                    <ul class="dropdown">
+                                        <li><a href="{% url 'homepage:home' %}">- Home</a></li>
+                                        <li><a href="{% url 'about:about' %}">- About</a></li>
+                                        <li><a href="{% url 'service:HomeService' %}">- Services</a></li>
+                                        <li><a href="{% url 'blog:blog' %}">- Blog</a></li>
+                                        <li><a href="{% url 'contact:form' %}">- Contact</a></li>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="{% url 'about:about' %}">About</a></li>
+                                <li><a href="{% url 'service:HomeService' %}">- Services</a></li>
+                                <li><a href="{% url 'blog:blog' %}">Blog</a></li>
+                                <li><a href="{% url 'contact:form' %}">Contact</a></li>
+                            </ul>
+
+                            <!-- Get A Quote -->
+                            <div class="get-a-quote ml-4 mr-3">
+                                <a href="{% url 'contact:form' %}" class="btn uza-btn">Get In Touch </a>
+                            </div>
+                            {% if request.user.is_authenticated %}
+                            <div class="login-register-btn mx-3">
+                                <a href="{% url 'account:account' %}">Hi, {{request.user.username}}</a> <br>
+                                <a href="{% url 'account:logout' %}">Logout</a>
+                            </div>
+                            {% else %}
+                            <!-- Login / Register -->
+                            <div class="login-register-btn mx-3">
+                                <a href="{% url 'account:login' %}">Login</a> <br>
+                                <a href="{% url 'account:register' %}">Register</a>
+                                {% endif %}
+                            </div>
+                            <!-- Search Icon -->
+                        </div>
+                        <!-- Nav End -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->

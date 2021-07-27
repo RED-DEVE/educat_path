@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+    احجز مكانك معانا وحقق حلمك وسافر واتعلم في اي دولة في العالم
+{% endblock title %}
+    
+{% block content %}
+<!-- ***** Breadcrumb Area Start ***** -->
+<div class="breadcrumb-area">
+    <div class="container h-100">
+        <div class="row h-100 align-items-end">
+                <div class="col-12">
+                    <div class="breadcumb--con">
+                        <h2 class="title">Contact</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{% url 'homepage:home' %}"><i class="fa fa-home"></i> Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Contact</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Background Curve -->
+        <div class="breadcrumb-bg-curve">
+            <img src="{% static './img/core-img/curve-5.png' %}" alt="">
+        </div>
+    </div>
+    <!-- ***** Breadcrumb Area End ***** -->
+    <!-- ***** Contact Area Start ***** -->
+    <section class="uza-contact-area section-padding-80">
+        <div class="container">
+            <div class="row justify-content-between">
+                <!-- Contact Form -->
+                <div class="col-12 col-lg-8">
+                    <div class="uza-contact-form mb-80">
+                        {% if success_message %}
+                        <p style="color:green; text-align: center;"><strong>{{success_message}}</strong></p>
+                        {% endif  %}
+                        <div class="contact-heading mb-50">
+                            <h4  dir="rtl" class="text-right">شكرا علي اهتمامك<br>من فضلك ارسل لنا استفسارك سيتم الرد عليك في اسرع وقت</h4>
+                        </div>
+                        <form  method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group col-md-12 mb-0">
+                                        {{ form.name|as_crispy_field  }}
+                                    </div>    
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group col-md-12 mb-0">
+                                        {{ form.email|as_crispy_field  }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group col-md-12 mb-0">
+                                        {{ form.phone|as_crispy_field }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group col-md-12 mb-0">
+                                        {{ form.subject|as_crispy_field  }}
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group col-md-12 mb-0">
+                                        {{ form.message|as_crispy_field }}
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn uza-btn btn-3 mt-15">Message Us</button>
+                                    {% if success_message %}
+                                    <p style="color:green; text-align: center;"><strong>{{success_message}}</strong></p>
+                                    {% endif  %}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Google Maps -->
+                <div class="col-12">
+                    <div class="google-maps">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.011505235914!2d31.209616915114854!3d30.036527781885116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDAyJzExLjUiTiAzMcKwMTInNDIuNSJF!5e0!3m2!1sen!2seg!4v1622732484499!5m2!1sen!2seg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  <!-- ***** Contact Area End ***** -->
+{% endblock content %}
